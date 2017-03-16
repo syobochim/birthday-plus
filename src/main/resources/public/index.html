@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>バースディ</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    <style>
+        .title {
+            margin-top: 20px;
+        }
+
+        .js-result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="row">
+    <div class="col s12 js-main">
+        <p class="title">生年月日を入力してください</p>
+        <div class="row">
+            <div class="input-field col s2">
+                <input id="year" type="number" placeholder="1990" class="validate">
+                <label for="year">year</label>
+            </div>
+            <div class="input-field col s2">
+                <input id="month" type="number" placeholder="2" class="validate">
+                <label for="month">month</label>
+            </div>
+            <div class="input-field col s2">
+                <input id="day" type="number" placeholder="26" class="validate">
+                <label for="day">day</label>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light js-submit" type="button">10000日後！</button>
+        <div class="js-result"></div>
+    </div>
+</div>
+<script>
+
+    $('.js-submit').on('click', function () {
+        var data = {
+            'year': $('#year').val(),
+            'month': $('#month').val(),
+            'day': $('#day').val()
+        };
+        $.get('http://localhost:4567/plus', data,
+            function (res) {
+                $('.js-result').text('あなたの生年月日の10000日後は' + res.year + '/' + res.month + '/' + res.day + 'です')
+            }, "json"
+        );
+    });
+</script>
+</body>
+</html>
