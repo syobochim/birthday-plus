@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import spark.ResponseTransformer;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,6 +31,7 @@ public class BirthdayPlus {
             map.put("year", plusDays.getYear());
             map.put("month", plusDays.getMonthValue());
             map.put("day", plusDays.getDayOfMonth());
+            map.put("yyyyMMdd", plusDays.format(DateTimeFormatter.ofPattern("yyyyMMdd")));
 
             return map;
         }, new JsonTransformer());

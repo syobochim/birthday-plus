@@ -39,7 +39,6 @@
     </div>
 </div>
 <script>
-
     $('.js-submit').on('click', function () {
         var data = {
             'year': $('#year').val(),
@@ -48,7 +47,12 @@
         };
         $.get('http://localhost:4567/plus', data,
             function (res) {
-                $('.js-result').text('あなたの生年月日の10000日後は' + res.year + '/' + res.month + '/' + res.day + 'です')
+                var url =
+                    "http://www.google.com/calendar/event?action=TEMPLATE"
+                    + "&text=生まれてから10000日目"
+                    + "&dates=" + res.yyyyMMdd + "/" + res.yyyyMMdd;
+                $('.js-result').html('あなたの生年月日の10000日後は' + res.year + '/' + res.month + '/' + res.day + 'です<br />'
+                    + "<a href=\"" + url + "\" >Googleカレンダーに登録</a>");
             }, "json"
         );
     });
