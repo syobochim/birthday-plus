@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static spark.Spark.get;
+import static spark.SparkBase.port;
 import static spark.SparkBase.staticFileLocation;
 
 /**
@@ -18,6 +19,11 @@ public class BirthdayPlus {
 
     public static void main(String... args) {
 
+        String port = System.getenv("PORT");
+        if (port == null) {
+            port = "4567";
+        }
+        port(Integer.valueOf(port));
         staticFileLocation("/public");
 
         get("/plus", (req, res) -> {
