@@ -50,7 +50,7 @@
                 var url =
                     "http://www.google.com/calendar/event?action=TEMPLATE"
                     + "&text=生まれてから10000日目"
-                    + "&dates=" + res.yyyyMMdd + "/" + res.yyyyMMdd;
+                    + "&dates=" + res.yyyyMMdd + "T083000/" + res.yyyyMMdd + "T100000";
                 $('.js-result').html('あなたの生年月日の10000日後は' + res.year + '/' + res.month + '/' + res.day + 'です<br />'
                     + "<a href=\"" + url + "\" >Googleカレンダーに登録</a>");
             }, "json"
